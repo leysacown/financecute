@@ -1,7 +1,5 @@
-// Mengubah kunci penyimpanan agar data lama terserap dan dimulai dari awal yang bersih
 const STORAGE_KEY = 'finance_tracker_oliv_alsa_clean_v1';
 
-// Kosongkan array defaultTransactions agar tidak ada data bawaan
 const defaultTransactions = [];
 
 let transactions = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultTransactions;
@@ -18,7 +16,6 @@ const transactionList = document.getElementById('transactionList');
 const emptyState = document.getElementById('emptyState');
 const resetDemoBtn = document.getElementById('resetDemoBtn');
 
-// Set default tanggal hari ini
 if (dateInput) {
   dateInput.valueAsDate = new Date();
 }
@@ -156,8 +153,6 @@ window.deleteTransaction = function(id) {
 };
 
 resetDemoBtn.addEventListener('click', () => {
-  // Jika tombol reset demo diklik, Anda bisa memasukkan data contoh lagi di sini jika mau,
-  // atau biarkan kosong ([]).
   transactions = []; 
   saveTransactions();
   updateSummary();
@@ -167,6 +162,5 @@ resetDemoBtn.addEventListener('click', () => {
 searchInput.addEventListener('input', renderTransactions);
 filterType.addEventListener('change', renderTransactions);
 
-// Inisialisasi awal
 updateSummary();
 renderTransactions();
