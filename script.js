@@ -1,11 +1,8 @@
-const STORAGE_KEY = 'finance_tracker_oliv_alsa_v1';
+// Mengubah kunci penyimpanan agar data lama terserap dan dimulai dari awal yang bersih
+const STORAGE_KEY = 'finance_tracker_oliv_alsa_clean_v1';
 
-const defaultTransactions = [
-  { id: 1, title: 'Uang Saku & Bonus Bulanan', amount: 3500000, type: 'income', category: '💼 Gaji & Bonus', date: '2026-11-01' },
-  { id: 2, title: 'Beli Matcha & Croissant', amount: 85000, type: 'expense', category: '🍔 Makanan & Jajan', date: '2026-11-05' },
-  { id: 3, title: 'Belanja Aksesoris Lucu', amount: 240000, type: 'expense', category: '🛍️ Belanja Lucu', date: '2026-11-10' },
-  { id: 4, title: 'Hadiah Projek Desain', amount: 750000, type: 'income', category: '🎁 Hadiah', date: '2026-11-14' }
-];
+// Kosongkan array defaultTransactions agar tidak ada data bawaan
+const defaultTransactions = [];
 
 let transactions = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultTransactions;
 let financeChart = null;
@@ -22,7 +19,9 @@ const emptyState = document.getElementById('emptyState');
 const resetDemoBtn = document.getElementById('resetDemoBtn');
 
 // Set default tanggal hari ini
-dateInput.valueAsDate = new Date();
+if (dateInput) {
+  dateInput.valueAsDate = new Date();
+}
 
 function formatRupiah(num) {
   return 'Rp ' + num.toLocaleString('id-ID');
@@ -157,7 +156,9 @@ window.deleteTransaction = function(id) {
 };
 
 resetDemoBtn.addEventListener('click', () => {
-  transactions = [...defaultTransactions];
+  // Jika tombol reset demo diklik, Anda bisa memasukkan data contoh lagi di sini jika mau,
+  // atau biarkan kosong ([]).
+  transactions = []; 
   saveTransactions();
   updateSummary();
   renderTransactions();
