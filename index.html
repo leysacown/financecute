@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finance Tracker by Oliv and Alsa</title>
+  
+  <!-- Google Fonts: Fredoka & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- CSS Eksternal -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Efek Latar Belakang Pastel -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo-badge">✨🐷</div>
+        <div>
+          <h1>Finance Tracker by Oliv and Alsa</h1>
+          <p class="subtitle">Catat pemasukan & pengeluaran dengan ceria 💖</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="resetDemoBtn" class="btn-secondary" title="Reset ke data contoh">🔄 Reset Demo</button>
+      </div>
+    </header>
+
+    <!-- Summary Cards -->
+    <section class="summary-grid">
+      <div class="card summary-card balance-card">
+        <div class="card-icon">💰</div>
+        <div class="card-info">
+          <span class="card-label">Total Saldo</span>
+          <h2 id="totalBalance" class="card-value">Rp 0</h2>
+        </div>
+      </div>
+
+      <div class="card summary-card income-card">
+        <div class="card-icon">🌈</div>
+        <div class="card-info">
+          <span class="card-label">Total Pemasukan</span>
+          <h2 id="totalIncome" class="card-value">Rp 0</h2>
+        </div>
+      </div>
+
+      <div class="card summary-card expense-card">
+        <div class="card-icon">🛍️</div>
+        <div class="card-info">
+          <span class="card-label">Total Pengeluaran</span>
+          <h2 id="totalExpense" class="card-value">Rp 0</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <main class="main-grid">
+      <!-- Form Tambah Transaksi -->
+      <section class="card form-section">
+        <h3>📝 Tambah Catatan Baru</h3>
+        <form id="transactionForm">
+          <div class="type-toggle">
+            <input type="radio" name="type" id="typeIncome" value="income" checked />
+            <label for="typeIncome" class="toggle-btn income-toggle">✨ Pemasukan</label>
+
+            <input type="radio" name="type" id="typeExpense" value="expense" />
+            <label for="typeExpense" class="toggle-btn expense-toggle">💸 Pengeluaran</label>
+          </div>
+
+          <div class="form-group">
+            <label for="title">Keterangan</label>
+            <input type="text" id="title" placeholder="Contoh: Jajan Boba / Gaji Bulanan" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="amount">Nominal (Rp)</label>
+              <input type="number" id="amount" placeholder="50000" min="1" required />
+            </div>
+
+            <div class="form-group">
+              <label for="category">Kategori</label>
+              <select id="category">
+                <option value="🍔 Makanan & Jajan">🍔 Makanan & Jajan</option>
+                <option value="🛍️ Belanja Lucu">🛍️ Belanja Lucu</option>
+                <option value="🚗 Transportasi">🚗 Transportasi</option>
+                <option value="💼 Gaji & Bonus">💼 Gaji & Bonus</option>
+                <option value="🎁 Hadiah">🎁 Hadiah</option>
+                <option value="💡 Tagihan">💡 Tagihan</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Tanggal</label>
+            <input type="date" id="date" required />
+          </div>
+
+          <button type="submit" class="btn-primary">💖 Simpan Catatan</button>
+        </form>
+      </section>
+
+      <!-- Chart & Riwayat Transaksi -->
+      <section class="right-column">
+        <div class="card chart-section">
+          <div class="section-header">
+            <h3>📊 Ringkasan Keuangan</h3>
+            <span class="badge-pill">Update Otomatis</span>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="financeChart"></canvas>
+          </div>
+        </div>
+
+        <div class="card history-section">
+          <div class="section-header">
+            <h3>🧾 Riwayat Transaksi</h3>
+            <div class="filter-controls">
+              <input type="text" id="searchInput" placeholder="Cari transaksi..." />
+              <select id="filterType">
+                <option value="all">Semua</option>
+                <option value="income">Pemasukan</option>
+                <option value="expense">Pengeluaran</option>
+              </select>
+            </div>
+          </div>
+
+          <ul id="transactionList" class="transaction-list"></ul>
+          <p id="emptyState" class="empty-state hidden">Belum ada catatan nih! Yuk tambah transaksi pertamamu 🌟</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Dibuat dengan penuh semangat oleh <strong>Oliv & Alsa</strong> 🌸✨</p>
+    </footer>
+  </div>
+
+  <!-- JavaScript Eksternal -->
+  <script src="script.js"></script>
+</body>
+</html>
