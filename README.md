@@ -8,8 +8,7 @@ Pemanfaatan AI: AI yang digunakan adalah Gemini
 Contoh perintah (prompt): posisikan dirimu sebagai programmer yang mengembangkan produk keuangan
 Penyesuaian atau perbaikan mandiri: menambah/mengganti style.CSS 
 Panduan penggunaan: menambah struktur dasar HTML, mengedit/menambahkan CSS untuk mempercantik dan mengatur tata letak agar lebih menarik dan nyaman dilihat. Menambahkan Javascript agar halaman web bisa memasukkan data, menghitung saldo supaya lebih interaktif.
-Tautan situs web: 
-
+Tautan situs web: https://leysacown.github.io/financecute/
 Identitas pengembang
 Nama pengembang: 1. Olivia Herlin Fernanda
                  2. Salsabilla Alya Rahmadani
